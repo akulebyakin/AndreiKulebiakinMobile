@@ -1,0 +1,14 @@
+# Compiled class file
+*.class
+
+# Log file
+*.log
+
+target
+*.iml
+.idea
+etc
+
+# allure
+.allure
+allure-results
