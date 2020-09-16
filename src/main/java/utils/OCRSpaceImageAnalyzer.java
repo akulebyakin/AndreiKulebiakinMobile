@@ -28,7 +28,7 @@ public class OCRSpaceImageAnalyzer {
 
         String parsedText = RestAssured
                 .given(sendFileSpecification)
-                .log().all()
+//                .log().all()
                 .multiPart("file", imageFile, "application/octet-stream")
                 .post()
                 .then()
