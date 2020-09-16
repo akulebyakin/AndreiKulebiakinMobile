@@ -13,4 +13,4 @@ etc
 .allure
 allure-results
 
-.png
+*.png
