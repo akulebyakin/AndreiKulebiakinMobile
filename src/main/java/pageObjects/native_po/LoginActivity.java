@@ -23,6 +23,9 @@ public class LoginActivity {
     @AndroidFindBy(id = "platkovsky.alexey.epamtestapp:id/login_pwd")
     public WebElement passwordInput;
 
+    @AndroidFindBy(uiAutomator = "new UiSelector().textContains('incorrect')")
+    public WebElement errorMessage;
+
     public LoginActivity(AppiumDriver appiumDriver) {
         this.appiumDriver = appiumDriver;
         PageFactory.initElements(new AppiumFieldDecorator(appiumDriver), this);

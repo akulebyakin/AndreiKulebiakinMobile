@@ -11,7 +11,7 @@
             </run>
         </groups>
         <packages>
-            <package name="scenarios.ex2"/>
+            <package name="scenarios.web_tests"/>
         </packages>
     </test>
 </suite>

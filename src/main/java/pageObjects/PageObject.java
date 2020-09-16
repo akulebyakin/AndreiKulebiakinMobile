@@ -3,7 +3,7 @@ package pageObjects;
 import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.WebElement;
 import pageObjects.native_po.LoginActivity;
-import pageObjects.web_po.WebPageObject;
+import pageObjects.web_po.GoogleSite;
 import setup.IPageObject;
 
 import java.lang.reflect.Field;
@@ -13,18 +13,17 @@ public class PageObject implements IPageObject {
     Object somePageObject; // it should be set of web page or EPAM Test App WebElements
 
     public PageObject(String appType, AppiumDriver appiumDriver) throws Exception {
-
-        System.out.println("Current app type: "+appType);
-        switch(appType){
+        System.out.println("Current app type: " + appType);
+        switch (appType) {
             case "web":
-                somePageObject = new WebPageObject(appiumDriver);
+                somePageObject = new GoogleSite(appiumDriver);
                 break;
             case "native":
                 somePageObject = new LoginActivity(appiumDriver);
                 break;
-            default: throw new Exception("Can't create a page object for "+appType);
+            default:
+                throw new Exception("Can't create a page object for " + appType);
         }
-
     }
 
     @Override
@@ -38,4 +37,5 @@ public class PageObject implements IPageObject {
     public Object getSomePageObject() {
         return somePageObject;
     }
+
 }

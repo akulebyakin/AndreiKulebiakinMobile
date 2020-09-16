@@ -2,10 +2,6 @@ package entities;
 
 public class User {
 
-    public static User DEFAULT_USER = new User("test@test.test",
-            "Test",
-            "12345678");
-
     private String email;
 
     private String username;
