@@ -2,8 +2,8 @@ package scenarios.web_tests;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pageObjects.PageObject;
-import pageObjects.web_po.GoogleSite;
+import page_objects.PageObject;
+import page_objects.web_po.GoogleSite;
 import setup.BaseTest;
 import setup.DataProviders;
 

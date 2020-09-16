@@ -1,9 +1,9 @@
-package pageObjects;
+package page_objects;
 
 import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.WebElement;
-import pageObjects.native_po.LoginActivity;
-import pageObjects.web_po.GoogleSite;
+import page_objects.native_po.LoginActivity;
+import page_objects.web_po.GoogleSite;
 import setup.IPageObject;
 
 import java.lang.reflect.Field;

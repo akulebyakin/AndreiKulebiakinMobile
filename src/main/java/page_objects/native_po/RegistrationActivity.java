@@ -1,4 +1,4 @@
-package pageObjects.native_po;
+package page_objects.native_po;
 
 import entities.User;
 import io.appium.java_client.AppiumDriver;

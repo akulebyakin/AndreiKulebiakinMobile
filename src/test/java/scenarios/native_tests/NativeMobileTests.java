@@ -2,9 +2,9 @@ package scenarios.native_tests;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pageObjects.PageObject;
-import pageObjects.native_po.LoginActivity;
-import pageObjects.native_po.RegistrationActivity;
+import page_objects.PageObject;
+import page_objects.native_po.LoginActivity;
+import page_objects.native_po.RegistrationActivity;
 import setup.BaseTest;
 import setup.DataProviders;
 
