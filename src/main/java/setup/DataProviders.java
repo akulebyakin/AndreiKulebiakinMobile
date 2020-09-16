@@ -19,4 +19,11 @@ public class DataProviders {
                 {"EPAM"}
         };
     }
+
+    @DataProvider
+    public static Object[][] getIncorrectEmailOrPasswordText() {
+        return new Object[][]{
+                {"Incorrect email or password"}
+        };
+    }
 }

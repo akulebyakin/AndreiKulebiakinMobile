@@ -1,5 +1,16 @@
 package scenarios.native_tests;
 
+import io.restassured.RestAssured;
+import io.restassured.builder.RequestSpecBuilder;
+import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
+import net.sourceforge.tess4j.ITesseract;
+import net.sourceforge.tess4j.Tesseract;
+import net.sourceforge.tess4j.Tesseract1;
+import net.sourceforge.tess4j.TesseractException;
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import page_objects.PageObject;
@@ -7,8 +18,13 @@ import page_objects.native_po.LoginActivity;
 import page_objects.native_po.RegistrationActivity;
 import setup.BaseTest;
 import setup.DataProviders;
+import utils.OCRSpaceImageAnalyzer;
+
+import java.io.File;
+import java.io.IOException;
 
 import static utils.GetTestProperties.TEST_USER;
+import static utils.Utils.takeScreenshot;
 
 public class NativeMobileTests extends BaseTest {
 
@@ -18,37 +34,49 @@ public class NativeMobileTests extends BaseTest {
 //        System.out.println("Simplest Android native test done");
 //    }
 
-    @Test(groups = {"native"}, description = "Register new account",
-            dataProviderClass = DataProviders.class, dataProvider = "getBudgetActivityName")
-    public void testRegisterNewAccount(String expected) {
+//    @Test(groups = {"native"}, description = "Register new account",
+//            dataProviderClass = DataProviders.class, dataProvider = "getBudgetActivityName")
+//    public void testRegisterNewAccount(String expected) {
+//        PageObject pageObject = (PageObject) getPageObject();
+//        LoginActivity loginActivity = (LoginActivity) pageObject.getSomePageObject();
+//
+//        RegistrationActivity registrationActivity = loginActivity.openRegistration();
+//        registrationActivity.registerWithUser(TEST_USER);
+//
+//        String activityName = loginActivity.loginWithUser(TEST_USER)
+//                .getActivityName();
+//
+//        Assert.assertEquals(activityName, expected,
+//                "Activity name is not equal to expected");
+//    }
+
+    @Test(groups = {"native"}, description = "Check error message when we click on SIGN IN "
+            + "without providing correct login and password",
+            dataProviderClass = DataProviders.class,
+            dataProvider = "getIncorrectEmailOrPasswordText")
+    public void testIncorrectLoginErrorMessage(String expected) {
         PageObject pageObject = (PageObject) getPageObject();
         LoginActivity loginActivity = (LoginActivity) pageObject.getSomePageObject();
 
-        RegistrationActivity registrationActivity = loginActivity.openRegistration();
-        registrationActivity.registerWithUser(TEST_USER);
+        loginActivity.signInBtn.click();
 
-        String activityName = loginActivity.loginWithUser(TEST_USER)
-                .getActivityName();
+        // 1. Capture screenshot
+        // 2. Using external API convert to text (OCR)
+        // 3. assert that imageText contains "Incorrect"
 
-        Assert.assertEquals(activityName, expected,
-                "Activity name is not equal to expected");
+        String imageText = "";
+        try {
+            // I don't know how to do it without Thread.sleep
+            Thread.sleep(1000);
+
+            File imageFile = takeScreenshot(getDriver());
+            imageText = OCRSpaceImageAnalyzer.getTextFromScreenshot(imageFile);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        Assert.assertTrue(imageText.contains(expected),
+                "There is no error message with expected text");
     }
-
-//    @Test(groups = {"native"}, description = "Check error message when we click on SIGN IN "
-//            + "without providing corect login and password")
-//    public void testIncorrectLoginErrorMessage() {
-//        PageObject pageObject = (PageObject) getPo();
-//        LoginActivity loginActivity = (LoginActivity) pageObject.getSomePageObject();
-//
-//        loginActivity.signInBtn.click();
-//
-//        System.out.println("Im here");
-//
-//        try {
-//            Thread.sleep(10000);
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
-//    }
 
 }
