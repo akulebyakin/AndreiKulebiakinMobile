@@ -13,6 +13,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
+import static utils.EPAMMobileCloudApi.installApp;
 import static utils.GetTestProperties.*;
 
 public class BaseTest implements IDriver {
@@ -47,11 +48,18 @@ public class BaseTest implements IDriver {
             if (app.isEmpty()) app = ANDROID_APP;
             if (appPackage.isEmpty()) appPackage = ANDROID_APP_PACKAGE;
             if (appActivity.isEmpty()) appActivity = ANDROID_APP_ACTIVITY;
+            if (TS_APPIUM.contains("mobilecloud.epam.com")) {
+                installApp(ANDROID_APP, ANDROID_DEVICE_UDID);
+            }
         } else if (platformName.equals("iOS")) {
             if (udid.isEmpty()) udid = IOS_DEVICE_UDID;
             if (app.isEmpty()) app = IOS_APP;
             if (bundleId.isEmpty()) bundleId = IOS_APP_BUNDLEID;
+            if (TS_APPIUM.contains("mobilecloud.epam.com")) {
+                installApp(IOS_APP, IOS_DEVICE_UDID);
+            }
         }
+
 
         setAppiumDriver(platformName, deviceName, udid, browserName, app, appPackage, appActivity,
                 bundleId);
