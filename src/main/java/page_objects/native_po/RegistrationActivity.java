@@ -13,21 +13,27 @@ public class RegistrationActivity {
     @AndroidFindBy(id = "platkovsky.alexey.epamtestapp:id/registration_email")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeTextField[@value='user@example.com']")
     public WebElement registerEmailInput;
+
     @AndroidFindBy(id = "platkovsky.alexey.epamtestapp:id/registration_username")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeTextField[@value='TimApple']")
     public WebElement registerUsernameInput;
+
     @AndroidFindBy(id = "platkovsky.alexey.epamtestapp:id/registration_password")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeSecureTextField[@value='Required']")
     public WebElement registerPasswordInput;
+
     @AndroidFindBy(id = "platkovsky.alexey.epamtestapp:id/registration_confirm_password")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeSecureTextField[@value='Repeat please']")
     public WebElement registerConfirmPasswordInput;
+
     @AndroidFindBy(className = "android.widget.CheckedTextView")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeSwitch[@label='I read agreaments and agree wit it']")
     public WebElement registerAgreementCheckbox;
+
     @AndroidFindBy(id = "platkovsky.alexey.epamtestapp:id/register_new_account_button")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@label='Register new account']")
     public WebElement registerNewAccountBtn;
+
     private AppiumDriver appiumDriver;
 
     public RegistrationActivity(AppiumDriver appiumDriver) {

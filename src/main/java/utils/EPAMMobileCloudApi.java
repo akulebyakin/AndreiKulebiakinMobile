@@ -15,7 +15,6 @@ public class EPAMMobileCloudApi {
             "https://mobilecloud.epam.com/automation/api/storage/install/";
 
     public static void installApp(String appPathName, String deviceUdid) {
-//        installiOSApp("", deviceUdid);
         File app = new File(appPathName);
 
         RequestSpecification sendFileSpecification = new RequestSpecBuilder()

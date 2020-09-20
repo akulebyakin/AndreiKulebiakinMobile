@@ -48,7 +48,6 @@ public class GoogleSite {
 
         // sendKeys doesn't work for iOs devices, at least in this way.
         // searchInput.sendKeys(Keys.ENTER);
-
         new WebDriverWait(appiumDriver, 10).until(
                 ExpectedConditions.visibilityOfAllElements(searchResults)
         );

@@ -15,6 +15,7 @@ public class BudgetActivity {
     private AppiumDriver appiumDriver;
 
     @AndroidFindBy(id = "platkovsky.alexey.epamtestapp:id/action_bar")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[@label='Budget']")
     public WebElement actionBar;
 
     @AndroidFindBy(id = "platkovsky.alexey.epamtestapp:id/add_new_expense")
@@ -33,6 +34,12 @@ public class BudgetActivity {
         new WebDriverWait(appiumDriver, 60)
                 .until(ExpectedConditions.visibilityOf(addExpenseBtn));
         return actionBar.findElement(By.className("android.widget.TextView")).getText();
+    }
+
+    public String getiOSPageName() {
+        new WebDriverWait(appiumDriver, 60)
+                .until(ExpectedConditions.visibilityOf(addExpenseBtn));
+        return actionBar.getText();
     }
 
 }

@@ -55,18 +55,26 @@ public class NativeMobileTests extends BaseTest {
 
     @Test(priority = 2, groups = {"native"}, description = "Register new account",
             dataProviderClass = DataProviders.class, dataProvider = "getBudgetActivityName")
-    public void testRegisterNewAccount(String expected) {
+    public void testRegisterNewAccount(String androidExpected, String iOSExpected) {
         PageObject pageObject = (PageObject) getPageObject();
         LoginActivity loginActivity = (LoginActivity) pageObject.getSomePageObject();
 
         RegistrationActivity registrationActivity = loginActivity.openRegistration();
         registrationActivity.registerWithUser(TEST_USER);
 
-        String activityName = loginActivity.loginWithUser(TEST_USER)
-                .getActivityName();
+        if (platformName.equals("Android")) {
+            String activityName = loginActivity.loginWithUser(TEST_USER)
+                    .getActivityName();
 
-        Assert.assertEquals(activityName, expected,
-                "Activity name is not equal to expected");
+            Assert.assertEquals(activityName, androidExpected,
+                    "Activity name is not equal to expected");
+        } else if (platformName.equals("iOS")) {
+            String activityName = loginActivity.loginWithUser(TEST_USER)
+                    .getiOSPageName();
+
+            Assert.assertEquals(activityName, iOSExpected,
+                    "Activity name is not equal to expected");
+        }
     }
 
 }

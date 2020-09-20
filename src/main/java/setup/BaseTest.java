@@ -22,6 +22,8 @@ public class BaseTest implements IDriver {
 
     protected IPageObject po;
 
+    protected String platformName;
+
     @Override
     public AppiumDriver getDriver() {
         return appiumDriver;
@@ -42,24 +44,29 @@ public class BaseTest implements IDriver {
         System.out.println(">>> SET UP >>>");
         System.out.println("App type - " + appType);
 
-        // set capabilities from .propetries file
+        this.platformName = platformName;
+
+        // Set capabilities from .propetries file
         if (platformName.equals("Android")) {
             if (udid.isEmpty()) udid = ANDROID_DEVICE_UDID;
-            if (app.isEmpty()) app = ANDROID_APP;
-            if (appPackage.isEmpty()) appPackage = ANDROID_APP_PACKAGE;
-            if (appActivity.isEmpty()) appActivity = ANDROID_APP_ACTIVITY;
-            if (TS_APPIUM.contains("mobilecloud.epam.com")) {
-                installApp(ANDROID_APP, ANDROID_DEVICE_UDID);
+            if (appType.equals("native")) {
+                if (app.isEmpty()) app = ANDROID_APP;
+                if (appPackage.isEmpty()) appPackage = ANDROID_APP_PACKAGE;
+                if (appActivity.isEmpty()) appActivity = ANDROID_APP_ACTIVITY;
+                if (TS_APPIUM.contains("mobilecloud.epam.com")) {
+                    installApp(ANDROID_APP, ANDROID_DEVICE_UDID);
+                }
             }
         } else if (platformName.equals("iOS")) {
             if (udid.isEmpty()) udid = IOS_DEVICE_UDID;
-            if (app.isEmpty()) app = IOS_APP;
-            if (bundleId.isEmpty()) bundleId = IOS_APP_BUNDLEID;
-            if (TS_APPIUM.contains("mobilecloud.epam.com")) {
-                installApp(IOS_APP, IOS_DEVICE_UDID);
+            if (appType.equals("native")) {
+                if (app.isEmpty()) app = IOS_APP;
+                if (bundleId.isEmpty()) bundleId = IOS_APP_BUNDLEID;
+                if (TS_APPIUM.contains("mobilecloud.epam.com")) {
+                    installApp(IOS_APP, IOS_DEVICE_UDID);
+                }
             }
         }
-
 
         setAppiumDriver(platformName, deviceName, udid, browserName, app, appPackage, appActivity,
                 bundleId);
