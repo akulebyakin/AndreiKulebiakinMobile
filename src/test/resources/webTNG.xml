@@ -2,6 +2,7 @@
 <suite name="Web mobile testing Suite">
     <parameter name="appType" value="web"/>
     <parameter name="deviceName" value="emulator-5554"/>
+<!--    <parameter name="deviceName" value="ce117f82"/>-->
     <parameter name="platformName" value="Android"/>
     <parameter name="browserName" value="Chrome"/>
     <test name="Web tests">

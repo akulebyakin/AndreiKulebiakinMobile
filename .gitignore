@@ -14,3 +14,4 @@ etc
 allure-results
 
 *.png
+.env

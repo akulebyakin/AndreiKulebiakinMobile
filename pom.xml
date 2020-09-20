@@ -13,6 +13,8 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+        <token>8e3572af-b542-4f67-b8eb-711aac62e630</token>
     </properties>
 
     <dependencies>
@@ -60,10 +62,12 @@
                         <suiteXmlFile>${suite.file}</suiteXmlFile>
                     </suiteXmlFiles>
                     <systemPropertyVariables>
-                        <ts.appium>http://localhost:4723/wd/hub</ts.appium>
+                        <!--                        <ts.appium>http://localhost:4723/wd/hub</ts.appium>-->
+                        <ts.appium>https://EPM-TSTF:${token}@mobilecloud.epam.com/wd/hub</ts.appium>
                     </systemPropertyVariables>
                 </configuration>
             </plugin>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -93,6 +97,16 @@
             </activation>
             <properties>
                 <suite.file>./src/test/resources/webTNG.xml</suite.file>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>cloudWeb</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <suite.file>./src/test/resources/cloudWebTNG.xml</suite.file>
             </properties>
         </profile>
     </profiles>

@@ -2,10 +2,10 @@ package page_objects.web_po;
 
 import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
@@ -18,10 +18,13 @@ public class GoogleSite {
     private AppiumDriver appiumDriver;
 
     @FindBy(xpath = "//input[@name='q']")
-    public WebElement searchInput;
+    private WebElement searchInput;
 
     @FindBy(xpath = "//*[@id='rso']//div[@role='heading']")
-    List<WebElement> searchResults;
+    private List<WebElement> searchResults;
+
+    @FindBy(className = "sbct")
+    private List<WebElement> suggests;
 
     public GoogleSite(AppiumDriver appiumDriver) {
         this.appiumDriver = appiumDriver;
@@ -41,11 +44,21 @@ public class GoogleSite {
 
     public GoogleSite searchText(String searchText) {
         searchInput.sendKeys(searchText);
-        searchInput.sendKeys(Keys.ENTER);
+        suggests.get(0).click();
+
+        // sendKeys doesn't work for iOs devices, at least in this way.
+        // searchInput.sendKeys(Keys.ENTER);
+
+        new WebDriverWait(appiumDriver, 10).until(
+                ExpectedConditions.visibilityOf(searchResults.get(2))
+        );
         return this;
     }
 
     public List<String> getListResults() {
+        new WebDriverWait(appiumDriver, 10).until(
+                ExpectedConditions.visibilityOf(searchResults.get(2))
+        );
         return searchResults.stream()
                 .map(WebElement::getText)
                 .collect(Collectors.toList());
