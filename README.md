@@ -6,17 +6,17 @@ Clone project with implemented Appium tests for EPAM Test Automation Training Ho
 <i>example of .env content:</i><br>
 emc.api.key=########-####-####-####-############
 2. Configure test.properties file <br> 
-<i>path to file:</i> src/test/resources/test.properties
-3. Run EPAM Mobile Cloud Web Test for iOS via command line: mvn clean test -PcloudWebiOS
-4. Run EPAM Mobile Cloud Native Test for iOS via command line: mvn clean test -PcloudNativeiOS
-5. Run EPAM Mobile Cloud Web Test for Android via command line: mvn clean test -PcloudWebAndroid
-6. Run EPAM Mobile Cloud Native Test for Android via command line: mvn clean test -PcloudNativeAndroid
+<i>path to file:</i> src/test/resources/test.properties<br>
+3. Run EPAM Mobile Cloud Web Test for iOS via command line: mvn clean test -PcloudWebiOS<br>
+4. Run EPAM Mobile Cloud Native Test for iOS via command line: mvn clean test -PcloudNativeiOS<br>
+5. Run EPAM Mobile Cloud Web Test for Android via command line: mvn clean test -PcloudWebAndroid<br>
+6. Run EPAM Mobile Cloud Native Test for Android via command line: mvn clean test -PcloudNativeAndroid<br>
 
 <h3>Steps to run local tests</h3>
-1. Run Appium and start new session using Android emulator or real device
-2. Configure file test.properties if needed
-3. Run Native tests via command line: mvn clean test -Pnative
-4. Run Web test via command line: mvn clean test -Pweb
+1. Run Appium and start new session using Android emulator or real device<br>
+2. Configure file test.properties if needed<br>
+3. Run Native tests via command line: mvn clean test -Pnative<br>
+4. Run Web test via command line: mvn clean test -Pweb<br>
 
 <b>Native tests: </b>
 1. <b>testIncorrectLoginErrorMessage</b> - additional task. Check error message when we click on SIGN IN without providing correct login and password.<br>
