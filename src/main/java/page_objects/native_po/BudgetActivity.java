@@ -3,6 +3,7 @@ package page_objects.native_po;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
+import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
@@ -17,6 +18,7 @@ public class BudgetActivity {
     public WebElement actionBar;
 
     @AndroidFindBy(id = "platkovsky.alexey.epamtestapp:id/add_new_expense")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@label='Add']")
     public WebElement addExpenseBtn;
 
     public BudgetActivity(AppiumDriver appiumDriver) {

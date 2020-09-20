@@ -50,15 +50,12 @@ public class GoogleSite {
         // searchInput.sendKeys(Keys.ENTER);
 
         new WebDriverWait(appiumDriver, 10).until(
-                ExpectedConditions.visibilityOf(searchResults.get(2))
+                ExpectedConditions.visibilityOfAllElements(searchResults)
         );
         return this;
     }
 
     public List<String> getListResults() {
-        new WebDriverWait(appiumDriver, 10).until(
-                ExpectedConditions.visibilityOf(searchResults.get(2))
-        );
         return searchResults.stream()
                 .map(WebElement::getText)
                 .collect(Collectors.toList());

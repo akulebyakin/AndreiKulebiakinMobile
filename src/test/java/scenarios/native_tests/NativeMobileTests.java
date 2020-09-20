@@ -1,16 +1,5 @@
 package scenarios.native_tests;
 
-import io.restassured.RestAssured;
-import io.restassured.builder.RequestSpecBuilder;
-import io.restassured.response.Response;
-import io.restassured.specification.RequestSpecification;
-import net.sourceforge.tess4j.ITesseract;
-import net.sourceforge.tess4j.Tesseract;
-import net.sourceforge.tess4j.Tesseract1;
-import net.sourceforge.tess4j.TesseractException;
-import org.apache.commons.io.FileUtils;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import page_objects.PageObject;
@@ -21,7 +10,6 @@ import setup.DataProviders;
 import utils.OCRSpaceImageAnalyzer;
 
 import java.io.File;
-import java.io.IOException;
 
 import static utils.GetTestProperties.TEST_USER;
 import static utils.Utils.takeScreenshot;
@@ -36,7 +24,7 @@ public class NativeMobileTests extends BaseTest {
 //        System.out.println("Simplest Android native test done");
 //    }
 
-    @Test(priority = 1, groups = {"native"},
+    @Test(priority = 1, groups = {"native", "android"},
             description = "Check error message when we click on SIGN IN "
                     + "without providing correct login and password",
             dataProviderClass = DataProviders.class,

@@ -1,7 +1,14 @@
 # AndreiKulebiakinMobile
 Clone project with implemented Appium tests for EPAM Test Automation Training Homework
 
-<b>Steps to run tests</b>
+<h3>Steps to tun tests on EPAM Mobile Cloud</h3>
+1. Create a '.env' file in the project directory. Put your Epam Mobile API Key there. <br>
+<i>example of .env content:</i><br>
+emc.api.key=########-####-####-####-############
+2. Configure test.properties file <br> 
+<i>path to file:</i> src/test/resources/test.properties
+
+<h3>Steps to run local tests</h3>
 1. run Appium and start new session using Android emulator or real device
 2. configure file test.properties if needed
 3. run Native tests via command line: mvn clean test -Pnative
