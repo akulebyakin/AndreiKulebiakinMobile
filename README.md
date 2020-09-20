@@ -4,7 +4,7 @@ Clone project with implemented Appium tests for EPAM Test Automation Training Ho
 <h3>Steps to tun tests on EPAM Mobile Cloud</h3>
 1. Create a '.env' file in the project directory. Put your Epam Mobile API Key there. <br>
 <i>example of .env content:</i><br>
-emc.api.key=########-####-####-####-############
+emc.api.key=########-####-####-####-############<br>
 2. Configure test.properties file <br> 
 <i>path to file:</i> src/test/resources/test.properties<br>
 3. Run EPAM Mobile Cloud Web Test for iOS via command line: mvn clean test -PcloudWebiOS<br>
